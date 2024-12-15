@@ -1,7 +1,9 @@
 #!/bin/bash
 
-author=zyj216
-# github=https://github.com/zyj216/v2ray
+author=zyj612
+# github=https://github.com/zyj612/v2ray
+
+
 
 # bash fonts colors
 red='\e[31m'
