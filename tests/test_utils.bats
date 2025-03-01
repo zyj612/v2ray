@@ -1,6 +1,7 @@
 #!/usr/bin/env bats
+
+load '../lib/utils.sh'
 @test "err outputs formatted message" {
-  source ../lib/utils.sh
   run err "Test message"  2>&1
   echo "Output: $output"
   echo "Status: $status"
