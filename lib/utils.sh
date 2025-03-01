@@ -1,5 +1,5 @@
 # 从 `ss_method_list` 列表中随机选择一个加密方式，并将其赋值给变量 `is_random_ss_method`。
-. ./variables.sh
+. ../config/variables.sh
 is_random_ss_method=${ss_method_list[$(shuf -i 0-${#ss_method_list[@]} -n1) - 1]}
 is_random_header_type=${header_type_list[$(shuf -i 1-5 -n1)]} # random dont use none
 is_random_servername=${servername_list[$(shuf -i 0-${#servername_list[@]} -n1) - 1]}
