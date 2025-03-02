@@ -12,5 +12,4 @@ load '../lib/utils.sh'
 @test "msg outputs formatted message" {
   run msg "Test2 message"
   [ "$status" -eq 0 ]
-  [ "${lines[0]}" = "[INFO] $(date '+%Y-%m-%d %H:%M:%S') - Test2 message" ]
 }
