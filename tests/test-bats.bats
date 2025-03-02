@@ -5,3 +5,9 @@
   echo yyy >&2
   echo "Output: $output" >&3
 }
+
+@test "测试bats语法内容" {
+  run his xxx
+  echo yyy >&2
+  echo "Output: $output" >&3
+}
