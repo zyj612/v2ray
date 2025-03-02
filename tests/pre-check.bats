@@ -4,7 +4,8 @@ load '../lib/pre-check.sh'
 
 @test "预检查函数测试" {
   run pre_check -v 2.0
-  echo $status
+  echo "Status: $status" >&3
+  echo "Output:" >&3
 }
 
 @test "预检查函数一般验证" {
