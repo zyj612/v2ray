@@ -2,7 +2,7 @@
 
 load '../lib/pre-check.sh'
 
-@test "预检查信息" {
-  run precheck -v 2.0 -f test.sh
+@test "预检查函数验证" {
+  run pre_check -v 2.0 -f test.sh
   [ "$status" -eq 0 ]
 }
