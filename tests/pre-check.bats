@@ -2,6 +2,11 @@
 
 load '../lib/pre-check.sh'
 
+@test "预检查函数测试" {
+  run pre_check -v 2.0
+  echo $status
+}
+
 @test "预检查函数一般验证" {
   run pre_check -v 2.0
   [ "$status" -eq 0 ]
