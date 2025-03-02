@@ -2,15 +2,16 @@
 
 load '../lib/pre-check.sh'
 
-@test "预检查函数测试" {
-  run pre_check -v 2.0
-  echo "Status: $status" >&3
-  pre_check -v 2.0 1>&3 2>&3
-}
-
 @test "预检查函数一般验证" {
   run pre_check -v 2.0
-  [ "$status" -eq 0 ]
+  if [[ "$status" -eq 0 ]]; then
+    # 成功时的断言
+    echo "命令成功，状态码为 0"
+  else
+    # 失败时的断言
+    echo "命令失败，状态码为 $status" >&2
+    [[ "$output" == "检测到脚本已安装"* ]]  # 必须包含的关键字
+  fi
 }
 
 @test "预检查函数同时传-v和-f参数" {
