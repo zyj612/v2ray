@@ -1,20 +1,7 @@
 #!/bin/bash
 
-author=zyj612
-# github=https://github.com/zyj612/v2ray
 
 
-# root
-[[ $EUID != 0 ]] && err "当前非 ${yellow}ROOT用户.${none}"
-
-# yum or apt-get, ubuntu/debian/centos
-cmd=$(type -P apt-get || type -P yum)
-[[ ! $cmd ]] && err "此脚本仅支持 ${yellow}(Ubuntu or Debian or CentOS)${none}."
-
-# systemd
-[[ ! $(type -P systemctl) ]] && {
-    err "此系统缺少 ${yellow}(systemctl)${none}, 请尝试执行:${yellow} ${cmd} update -y;${cmd} install systemd -y ${none}来修复此错误."
-}
 
 # wget installed or none
 is_wget=$(type -P wget)
@@ -182,12 +169,6 @@ exit_and_del_tmpdir() {
 
 # main
 main() {
-
-    # show welcome msg
-    clear
-    echo
-    echo "........... $is_core_name script by $author .........."
-    echo
 
     # start installing...
     msg warn "开始安装..."

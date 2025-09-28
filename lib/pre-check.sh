@@ -4,15 +4,31 @@
 # 加载公共方法
 . ../lib/utils.sh
 
-# check old version
+# 加载预检查
 pre_check() {
-    
+    # check old version
+    base_check
+    # check parameters
+    param_check $@
+}
+
+base_check(){
+
     [[ -f $is_sh_bin && -d $is_core_dir/bin && -d $is_sh_dir && -d $is_conf_dir ]] && {
         err "检测到脚本已安装, 如需重装请使用${green} ${is_core} reinstall ${none}命令."
     }
 
-    # check parameters
-    param_check $@
+    # root
+    [[ $EUID != 0 ]] && err "当前非 ${yellow}ROOT用户.${none}"
+
+    # yum or apt-get, ubuntu/debian/centos
+    cmd=$(type -P apt-get || type -P yum)
+    [[ ! $cmd ]] && err "此脚本仅支持 ${yellow}(Ubuntu or Debian or CentOS)${none}."
+
+    # systemd
+    [[ ! $(type -P systemctl) ]] && {
+    err "此系统缺少 ${yellow}(systemctl)${none}, 请尝试执行:${yellow} ${cmd} update -y;${cmd} install systemd -y ${none}来修复此错误."
+    }
 }
 
 

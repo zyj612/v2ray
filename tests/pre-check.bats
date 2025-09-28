@@ -8,6 +8,8 @@ load '../lib/pre-check.sh'
     # 成功时的断言
     echo "命令成功，状态码为 0"
   else
+    if [[ "$output" == *"检测到脚本已安装"* ]];then
+      echo "脚本已安装"
     # 失败时的断言
     echo "命令失败，状态码为 $status" >&2
     [[ "$output" == *"检测到脚本已安装"* ]]  # 必须包含的关键字
